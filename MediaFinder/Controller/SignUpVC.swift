@@ -9,6 +9,8 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var addressLabel: UILabel!
     
+    
+    var database = DatabaseManager.shared()
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -19,6 +21,8 @@ class SignUpVC: UIViewController {
         profilePictureImageView.layer.cornerRadius = profilePictureImageView.frame.size.height/2
         profilePictureImageView.clipsToBounds = true
         
+        database.createAccountsTable()
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -27,8 +31,10 @@ class SignUpVC: UIViewController {
     
     
     @IBAction func locationPickButton(_ sender: UIButton) {
-        MapKitVC.delegate = self
-        present(MapKitVC, animated: true, completion: nil)
+        let mapKitVC = UIStoryboard(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: VCs.mapVC) as! MapKit
+        
+        mapKitVC.delegate = self
+        present(mapKitVC, animated: true, completion: nil)
     }
 // validation manager
     private func isValidEmail(_ email: String) -> Bool {
@@ -52,13 +58,6 @@ class SignUpVC: UIViewController {
     }
     
     
-    private func saveData() {
-        let user = User(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, profileImage: profilePictureImageView.image!, address: addressLabel.text ?? "")
-        let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
-        UserDefaults.standard.set(encodedData, forKey: "user")
-        
-    }
-    
     private func goToSignInVc() {
         let signInVC = UIStoryboard.init(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: VCs.signInVC) as! SignInVC
         self.navigationController?.pushViewController(signInVC, animated: true)
@@ -69,7 +68,10 @@ class SignUpVC: UIViewController {
     
     @IBAction func joinNowButton(_ sender: UIButton) {
         if isValidData(), isValidEmail(emailTextField.text!), isValidPassword(passwordTextField.text!) {
-            saveData()
+
+            database.insertAccounts(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, profileImage: profilePictureImageView.image!.pngData()!, address: addressLabel.text!)
+            database.createTable()
+            database.insertData(text: "Trending")
             goToSignInVc()
         } else {
             sender.shake()
@@ -84,7 +86,10 @@ class SignUpVC: UIViewController {
     
     func imagePickerController( _ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let chosenImage = info[.originalImage] as? UIImage {
+            
+            
             profilePictureImageView.image = chosenImage
+            
             dismiss(animated: true, completion: nil)
         }
         

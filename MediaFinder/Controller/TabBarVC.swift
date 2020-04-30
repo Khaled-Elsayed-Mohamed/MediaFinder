@@ -8,23 +8,39 @@
 
 import UIKit
 
-class TabBarVC: UITabBarController {
-
+class TabBarVC: UITabBarController, UITabBarControllerDelegate {
+    
+    
+    
+    func setupTabBar() {
+        
+        let profileVC = UIStoryboard(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: VCs.profileVC) as! ProfileVC
+        let tableVC = UIStoryboard.init(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: VCs.moviesListVC) as! MoviesListVC
+        let tableVcNav = UINavigationController(rootViewController: tableVC)
+        let profileNav = UINavigationController(rootViewController: profileVC)
+        
+        let vc1 = tableVcNav
+        let vc2 = profileNav
+        
+        let icon1 = UITabBarItem(title: "Media", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
+        let icon2 = UITabBarItem(title: "Profile", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
+        vc1.tabBarItem = icon1
+        vc2.tabBarItem = icon2
+        let controllers = [vc1, vc2]  //array of the root view controllers displayed by the tab bar interface
+        self.viewControllers = controllers
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        delegate = self
+        
+        setupTabBar()
+  
 
-        // Do any additional setup after loading the view.
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

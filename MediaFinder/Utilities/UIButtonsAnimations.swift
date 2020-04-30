@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIButton {
+extension UIView {
     func shake() {
         
         let shake = CABasicAnimation(keyPath: "position")

@@ -6,34 +6,49 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailTextField: UILabel!
     
+    var database = DatabaseManager.shared()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         let def = UserDefaults.standard
         def.set(true, forKey: "is_authenticated") // save true flag to UserDefaults
+        
         
         navigationItem.hidesBackButton = false
         profilePictureImageView.layer.cornerRadius = profilePictureImageView.frame.size.height/2
         profilePictureImageView.clipsToBounds = true
         
+        let user = database.getIdData()
         
-        
-        let decoded = UserDefaults.standard.object(forKey: "user") as! Data
-        let user = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decoded) as? User
-        profilePictureImageView.image = user?.profileImage
-        nameLabel.text = "User Name:- \(user?.name ?? "")"
-        emailTextField.text = "User Email:- \(user?.email ?? "")"
+        nameLabel.text = user?.name
+        emailTextField.text = user?.email
+        profilePictureImageView.image = UIImage(data: user!.profileImage!)
+            
+    
     }
-   
+    
+    
+    func hideTabBar() {
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
+    }
     
     @IBAction func signOutButton(_ sender: Any) {
         
-        let signInVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+        hideTabBar()
         
         let def = UserDefaults.standard
         def.set(false, forKey: "is_authenticated") // save true flag to UserDefaults
+        let signInVC = UIStoryboard(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: VCs.signInVC) as! SignInVC
         navigationController?.pushViewController(signInVC, animated: true)
         
     }
+    
+    
+    
+
 }
 

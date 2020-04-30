@@ -5,15 +5,17 @@ class SignInVC: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var SignInButton: UIButton!
     
+    var database = DatabaseManager.shared()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         navigationItem.hidesBackButton = true
+        navigationController?.isNavigationBarHidden = true
         navigationItem.title = VCs.signInVC
         
-
+        
         
         
     }
@@ -21,15 +23,17 @@ class SignInVC: UIViewController {
         view.endEditing(true)
     }
     
-    private func goToTabelView() {
-        self.navigationController?.pushViewController(tableViewVC, animated: true)
+    private func goToTabBar() {
+        
+        let tabBar = TabBarVC()
+        navigationController?.pushViewController(tabBar, animated: true)
     }
     
     @IBAction func signInButton(_ sender: UIButton) {
-        let decoded = UserDefaults.standard.object(forKey: "user") as! Data
-        let user = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decoded) as? User
-        if user!.email == emailTextField.text && user?.password == passwordTextField.text {
-            goToTabelView()
+        if database.listAccounts(email: emailTextField.text!, password: passwordTextField.text!) == true {
+            goToTabBar()
+            let def = UserDefaults.standard
+            def.set(true, forKey: "is_authenticated")
         } else {
             sender.shake()
         }

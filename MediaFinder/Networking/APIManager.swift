@@ -10,8 +10,11 @@ import Foundation
 import Alamofire
 
 class APIManager {
-    static func loadMovies(completion: @escaping (_ error: Error?, _ movies: [MoviesData]?) -> Void) {
-        AF.request(Urls.base, method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: nil).response { response in
+    
+    
+    
+    static func loadMovies(search: String, completion: @escaping (_ error: Error?, _ movies: [resultsData]?) -> Void) {
+        AF.request(Urls.base, method: HTTPMethod.get, parameters: [parameters.term: search, parameters.media: parameters.scope], encoding: URLEncoding.default, headers: nil).response { response in
             
             guard  response.error == nil else {
                 print(response.error!)
@@ -24,8 +27,9 @@ class APIManager {
             }
             do {
                 let decoder = JSONDecoder()
-                let moviesArr = try decoder.decode([MoviesData].self, from: data)
-                completion(nil, moviesArr)
+                let resultsArr = try decoder.decode(results.self, from: data).results
+                completion(nil, resultsArr)
+                print(resultsArr)
             } catch let error {
                 print(error)
             }

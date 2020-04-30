@@ -6,20 +6,36 @@
 //  Copyright © 2020 Intake4. All rights reserved.
 //
 import UIKit
+import SDWebImage
+import MarqueeLabel
 
 class CustomCell: UITableViewCell {
     
-    @IBOutlet weak var cellImageView: UIImageView!
-    @IBOutlet weak var cellLabelField: UILabel!
+    @IBOutlet weak var artworkUrl100ImageView: UIImageView!
+
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
-    func configureCellData(data: MoviesData) {
-        cellLabelField.text = data.title
-        cellImageView.image = UIImage(named: data.image ?? "")
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 3, bottom: 5, right: 3))
+    }
+    
+    @IBOutlet weak var longDescription: UILabel!
+    @IBOutlet weak var artistName: UILabel!
+    
+    func configureCellData(data: resultsData) {
+        
+    artistName.text = data.artistName
+    longDescription.text = data.longDescription
+    artworkUrl100ImageView.sd_setImage(with: URL(string: data.artworkUrl100), completed: nil)
+    }
+    
+    @IBAction func shakeImage(_ sender: UIButton) {
+        artworkUrl100ImageView.shake()
     }
 }
+

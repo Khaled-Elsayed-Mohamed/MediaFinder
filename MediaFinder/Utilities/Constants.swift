@@ -13,6 +13,12 @@ struct VCs {
     static let signInVC = "SignInVC"
     static let profileVC = "ProfileVC"
     static let mapVC = "MapKit"
-    static let moviesListVC = "MovieListVC"
+    static let moviesListVC = "MoviesListVC"
     static let movieDetailsVC = "MovieDetailsVC"
 }
+
+
+struct Urls {
+    static let base = "https://itunes.apple.com/search?"
+}
+

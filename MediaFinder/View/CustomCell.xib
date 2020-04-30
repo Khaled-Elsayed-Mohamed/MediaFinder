@@ -12,29 +12,61 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CustomCell" selectionStyle="default" indentationWidth="10" rowHeight="132" id="KGk-i7-Jjw" customClass="CustomCell" customModule="MediaFinder" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CustomCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CustomCell" customModule="MediaFinder" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="405" height="132"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="405" height="131.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="to4-Ck-hzW">
-                        <rect key="frame" x="6" y="3" width="261" height="125.5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo9-rh-1pP">
-                        <rect key="frame" x="306" y="18" width="86" height="36"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruf-ov-HCI">
+                        <rect key="frame" x="163" y="6" width="222" height="26.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDG-h2-c59">
+                        <rect key="frame" x="6" y="6" width="129" height="123"/>
+                        <connections>
+                            <action selector="shakeImage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ehb-CM-Y97"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="to4-Ck-hzW">
+                        <rect key="frame" x="6" y="6" width="129" height="123"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="129" id="CPS-7n-m6S"/>
+                            <constraint firstAttribute="height" constant="123" id="WdY-tJ-OS0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhj-fp-Wsz">
+                        <rect key="frame" x="163" y="63" width="222" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="to4-Ck-hzW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="1NX-FR-w9T"/>
+                    <constraint firstItem="to4-Ck-hzW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="3fJ-dp-szT"/>
+                    <constraint firstAttribute="trailing" secondItem="ruf-ov-HCI" secondAttribute="trailing" constant="20" id="Ap9-FM-d3f"/>
+                    <constraint firstItem="sDG-h2-c59" firstAttribute="width" secondItem="to4-Ck-hzW" secondAttribute="width" id="DPi-gu-e8Q"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Fhj-fp-Wsz" secondAttribute="bottom" priority="250" constant="56" id="Fst-Rc-NfX"/>
+                    <constraint firstItem="ruf-ov-HCI" firstAttribute="leading" secondItem="to4-Ck-hzW" secondAttribute="trailing" constant="28" id="ItH-cb-Haw"/>
+                    <constraint firstItem="sDG-h2-c59" firstAttribute="centerY" secondItem="to4-Ck-hzW" secondAttribute="centerY" id="V2h-9D-nT7"/>
+                    <constraint firstItem="Fhj-fp-Wsz" firstAttribute="top" secondItem="ruf-ov-HCI" secondAttribute="bottom" constant="30.5" id="XEp-2V-GFh"/>
+                    <constraint firstItem="sDG-h2-c59" firstAttribute="height" secondItem="to4-Ck-hzW" secondAttribute="height" id="Yq2-hw-SWk"/>
+                    <constraint firstItem="Fhj-fp-Wsz" firstAttribute="trailing" secondItem="ruf-ov-HCI" secondAttribute="trailing" id="bZu-Ok-W2y"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="to4-Ck-hzW" secondAttribute="bottom" constant="6" id="c46-Dh-OyE"/>
+                    <constraint firstItem="sDG-h2-c59" firstAttribute="centerX" secondItem="to4-Ck-hzW" secondAttribute="centerX" id="cH4-ru-9Nn"/>
+                    <constraint firstItem="ruf-ov-HCI" firstAttribute="top" secondItem="to4-Ck-hzW" secondAttribute="top" id="gPF-2m-zHN"/>
+                    <constraint firstItem="Fhj-fp-Wsz" firstAttribute="leading" secondItem="ruf-ov-HCI" secondAttribute="leading" id="qNG-aZ-Udj"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="cellLabelField" destination="Lo9-rh-1pP" id="b4t-oi-Ihe"/>
+                <outlet property="artistName" destination="ruf-ov-HCI" id="GAK-EJ-NQx"/>
+                <outlet property="artworkUrl100ImageView" destination="to4-Ck-hzW" id="BmQ-Mj-CfA"/>
+                <outlet property="longDescription" destination="Fhj-fp-Wsz" id="MyV-xS-gpT"/>
             </connections>
             <point key="canvasLocation" x="193.47826086956522" y="182.8125"/>
         </tableViewCell>
