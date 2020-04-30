@@ -23,6 +23,8 @@
 		2920659424320CA400D16FB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920658C24320B9F00D16FB3 /* User.swift */; };
 		2920659524320CA700D16FB3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920658424320B6100D16FB3 /* Data.swift */; };
 		2920659724320D8100D16FB3 /* MoviesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920659624320D8100D16FB3 /* MoviesListVC.swift */; };
+		29445ED2245B63560042A05B /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29445ED1245B63560042A05B /* Results.swift */; };
+		29445ED5245B69CD0042A05B /* UIImageView+CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29445ED4245B69CD0042A05B /* UIImageView+CircularImage.swift */; };
 		2950DD4F244625AC00D22D42 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950DD4E244625AC00D22D42 /* TabBarVC.swift */; };
 		2977E4E8243CD72600BADB94 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977E4E7243CD72600BADB94 /* DatabaseManager.swift */; };
 		2996933D243215EE00C83500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996933C243215EE00C83500 /* APIManager.swift */; };
@@ -50,6 +52,8 @@
 		2920658D24320BA700D16FB3 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		2920658E24320BA900D16FB3 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		2920659624320D8100D16FB3 /* MoviesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListVC.swift; sourceTree = "<group>"; };
+		29445ED1245B63560042A05B /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		29445ED4245B69CD0042A05B /* UIImageView+CircularImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+CircularImage.swift"; sourceTree = "<group>"; };
 		2950DD4E244625AC00D22D42 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		2977E4E7243CD72600BADB94 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		2996933C243215EE00C83500 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 				292065692432086200D16FB3 /* AppDelegate.swift */,
 				2996933E2432174E00C83500 /* Networking */,
 				2920658124320B4100D16FB3 /* Utilities */,
+				29445ED3245B69920042A05B /* Extension */,
 				2920658224320B4900D16FB3 /* Model */,
 				2920658324320B5100D16FB3 /* View */,
 				292065712432097E00D16FB3 /* Controller */,
@@ -134,6 +139,7 @@
 			children = (
 				2920658424320B6100D16FB3 /* Data.swift */,
 				2920658C24320B9F00D16FB3 /* User.swift */,
+				29445ED1245B63560042A05B /* Results.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +151,14 @@
 				2920658D24320BA700D16FB3 /* CustomCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		29445ED3245B69920042A05B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				29445ED4245B69CD0042A05B /* UIImageView+CircularImage.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		2996933E2432174E00C83500 /* Networking */ = {
@@ -294,7 +308,9 @@
 				2920658924320B9100D16FB3 /* Shadows.swift in Sources */,
 				2920659024320C8B00D16FB3 /* MapKit.swift in Sources */,
 				2920659224320C9700D16FB3 /* CustomCell.swift in Sources */,
+				29445ED2245B63560042A05B /* Results.swift in Sources */,
 				2920657C24320A9400D16FB3 /* ProfileVC.swift in Sources */,
+				29445ED5245B69CD0042A05B /* UIImageView+CircularImage.swift in Sources */,
 				2920659124320C9100D16FB3 /* SignInVC.swift in Sources */,
 				2920656A2432086200D16FB3 /* AppDelegate.swift in Sources */,
 				2920659524320CA700D16FB3 /* Data.swift in Sources */,

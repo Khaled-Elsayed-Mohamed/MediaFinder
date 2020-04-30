@@ -1,8 +1,6 @@
 import Foundation
 import UIKit
 
-var flag: Bool = false
-
 
 struct User {
     var name: String!

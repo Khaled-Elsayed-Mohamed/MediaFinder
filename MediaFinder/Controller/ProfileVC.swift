@@ -4,7 +4,6 @@ class ProfileVC: UIViewController {
     
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailTextField: UILabel!
     
     var database = DatabaseManager.shared()
     
@@ -18,13 +17,11 @@ class ProfileVC: UIViewController {
         
         
         navigationItem.hidesBackButton = false
-        profilePictureImageView.layer.cornerRadius = profilePictureImageView.frame.size.height/2
-        profilePictureImageView.clipsToBounds = true
+        profilePictureImageView.circularImage()
         
         let user = database.getIdData()
         
         nameLabel.text = user?.name
-        emailTextField.text = user?.email
         profilePictureImageView.image = UIImage(data: user!.profileImage!)
             
     

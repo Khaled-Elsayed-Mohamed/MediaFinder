@@ -18,8 +18,7 @@ class SignUpVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         navigationItem.title = VCs.signUpVC
         
-        profilePictureImageView.layer.cornerRadius = profilePictureImageView.frame.size.height/2
-        profilePictureImageView.clipsToBounds = true
+        profilePictureImageView.circularImage()
         
         database.createAccountsTable()
         
